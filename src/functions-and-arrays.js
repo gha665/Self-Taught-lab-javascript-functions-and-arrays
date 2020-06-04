@@ -2,6 +2,7 @@
 function maxOfTwoNumbers(a, b) {
   return a > b ? a : b;
 }
+// ===============================================
 
 // Iteration #2: Find longest word
 const words = [
@@ -26,23 +27,49 @@ function findLongestWord(words) {
   }
   return longestWord;
 }
+// ===============================================
 
 // Iteration #3: Calculate the sum
 const numbers = [6, 12, 1, 18, 13, 16, 2, 1, 8, 10];
 
 function sumNumbers(numbers) {
-  let sum = 0;
+  let result = 0;
   for (i = 0; i < numbers.length; i++) {
-    sum += numbers[i];
+    result += numbers[i];
   }
-  return sum;
+  return result;
 }
 
+// Bonus - Iteration #3.1: A generic sum() function
+const mixedArr = [6, 12, "miami", 1, true, "barca", "200", "lisboa", 8, 10];
 
+function sum(mixedArr) {
+  mixedArr = mixedArr.map((el) => {
+    if (typeof el === "string") {
+      el = el.length;
+    } else if (typeof el === "boolean") {
+      if (el) el = 1;
+      else el = 0;
+    } else if (typeof el === "object" || typeof el === "array") {
+      throw new Error("Unsupported data type");
+    }
+    return el;
+  });
+  return sumNumbers(mixedArr);
+}
+
+// ===============================================
 
 // Iteration #4: Calculate the average
 // Level 1: Array of numbers
 const numbersAvg = [2, 6, 9, 10, 7, 4, 1, 9];
+
+function averageNumbers(numbersAvg) {
+  numbersAvg.length > 0
+    ? (numAvg = sumNumbers(numbersAvg) / numbersAvg.length)
+    : null;
+  return numAvg;
+}
 
 // Level 2: Array of strings
 const wordsArr = [
@@ -57,6 +84,18 @@ const wordsArr = [
   "fuel",
   "palace",
 ];
+
+function averageWordLength(wordsArr) {
+  let sum = 0;
+  //let wordInArr = wordsArr[i].split();
+  for (let i = 0; i < wordsArr.length; i++) {
+    sum += wordsArr[i].length;
+  }
+  if (wordsArr.length === 0) {
+    return null;
+  }
+  return (sum /= wordsArr.length);
+}
 
 // Iteration #5: Unique arrays
 const wordsUnique = [
