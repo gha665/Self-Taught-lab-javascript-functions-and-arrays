@@ -65,10 +65,7 @@ function sum(mixedArr) {
 const numbersAvg = [2, 6, 9, 10, 7, 4, 1, 9];
 
 function averageNumbers(numbersAvg) {
-  numbersAvg.length > 0
-    ? (numAvg = sumNumbers(numbersAvg) / numbersAvg.length)
-    : null;
-  return numAvg;
+  return sumNumbers(numbersAvg) / numbersAvg.length || null;
 }
 
 // Level 2: Array of strings
@@ -96,6 +93,15 @@ function averageWordLength(wordsArr) {
   }
   return (sum /= wordsArr.length);
 }
+
+// Bonus - Iteration #4.1: A generic avg() function
+// function avg(arr) {
+//   if (arr.length === 0) {
+//     return null;
+//   }
+//   let x = sum(arr);
+//   return x / arr.length;
+// }
 
 // Iteration #5: Unique arrays
 const wordsUnique = [
