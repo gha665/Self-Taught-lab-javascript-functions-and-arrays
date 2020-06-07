@@ -106,6 +106,8 @@ function avg(arr) {
   return Number(averageWordLength(arr).toFixed(2));
 }
 
+// ===============================================
+
 // Iteration #5: Unique arrays
 const wordsUnique = [
   "crab",
@@ -122,10 +124,12 @@ const wordsUnique = [
 ];
 
 function uniquifyArray(wordsUnique) {
-  // let uniqueObj = {}
   if (wordsUnique.length === 0) {
     return null;
   }
+
+  let obj = new Set(wordsUnique);
+  return [...obj];
 
   // let unique = [];
   // for (let i = 0; i < wordsUnique.length; i++) {
@@ -134,10 +138,9 @@ function uniquifyArray(wordsUnique) {
   //   }
   // }
   // return unique;
-
-  let obj = new Set(wordsUnique);
-  return [...obj];
 }
+
+// ===============================================
 
 // Iteration #6: Find elements
 const wordsFind = [
@@ -150,6 +153,18 @@ const wordsFind = [
   "truth",
   "disobedience",
 ];
+
+function doesWordExist(wordsFind, wordToSearch) {
+  if (wordsFind.length === 0) {
+    return null;
+  }
+
+  if (wordsFind.includes(wordToSearch)) {
+    return true;
+  } else return false;
+}
+
+// ===============================================
 
 // Iteration #7: Count repetition
 const wordsCount = [
