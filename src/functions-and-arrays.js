@@ -34,6 +34,10 @@ const numbers = [6, 12, 1, 18, 13, 16, 2, 1, 8, 10];
 
 function sumNumbers(numbers) {
   let result = 0;
+  if (numbers.length === 0) {
+    return 0;
+  }
+
   for (i = 0; i < numbers.length; i++) {
     result += numbers[i];
   }
@@ -51,7 +55,7 @@ function sum(mixedArr) {
       if (el) el = 1;
       else el = 0;
     } else if (typeof el === "object" || typeof el === "array") {
-      throw new Error("Unsupported data type");
+      throw new Error("Unsupported data type sir or ma'am");
     }
     return el;
   });
@@ -95,13 +99,12 @@ function averageWordLength(wordsArr) {
 }
 
 // Bonus - Iteration #4.1: A generic avg() function
-// function avg(arr) {
-//   if (arr.length === 0) {
-//     return null;
-//   }
-//   let x = sum(arr);
-//   return x / arr.length;
-// }
+function avg(arr) {
+  if (arr.length === 0) {
+    return null;
+  }
+  return Number(averageWordLength(arr).toFixed(2));
+}
 
 // Iteration #5: Unique arrays
 const wordsUnique = [
@@ -117,6 +120,8 @@ const wordsUnique = [
   "simple",
   "bring",
 ];
+
+function uniquifyArray(wordsUnique) {}
 
 // Iteration #6: Find elements
 const wordsFind = [
