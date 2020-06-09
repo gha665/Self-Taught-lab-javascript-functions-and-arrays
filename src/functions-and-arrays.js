@@ -196,8 +196,9 @@ function howManyTimes(wordsCount, wordNeeded) {
   return repetitive.length;
 }
 
-// Iteration #8: Bonus
+// ===============================================
 
+// Iteration #8: Bonus
 const matrix = [
   [8, 2, 22, 97, 38, 15, 0, 40, 0, 75, 4, 5, 7, 78, 52, 12, 50, 77, 91, 8],
   [
@@ -514,3 +515,80 @@ const matrix = [
     48,
   ],
 ];
+
+function greatestProduct(arr) {
+  let equalsTwoVar = equalsTwo(arr);
+  if (equalsTwoVar === true) return 16;
+
+  let maxHorizontalProd = prodHorizontalArray(arr);
+  let maxDiagonalProd = prodDiagonalArray(arr);
+  let maxVerticalProd = prodVerticalArray(arr);
+
+  let greatestArrayProd =
+    maxHorizontalProd > maxDiagonalProd && maxHorizontalProd > maxVerticalProd
+      ? maxHorizontalProd
+      : maxDiagonalProd > maxHorizontalProd && maxDiagonalProd > maxVerticalProd
+      ? maxDiagonalProd
+      : maxVerticalProd;
+
+  return greatestArrayProd;
+}
+
+function prodHorizontalArray(arr) {
+  let maxHorizontalProd = 0,
+    lineProd = 0;
+  arr.forEach((el) => {
+    lineProd = el.reduce((a, b) => a * b);
+    if (lineProd >= maxHorizontalProd) maxHorizontalProd = lineProd;
+  }, 0);
+  return maxHorizontalProd;
+}
+
+function prodDiagonalArray(arr) {
+  let maxDiagonalProd = 0,
+    upArrayProd = 0,
+    downArrayProd = 0,
+    compareArray1 = [],
+    compareArray2 = [];
+  for (let i = 0; i < arr.length; i++) {
+    compareArray1.push(arr[i][i]);
+    compareArray2.push(arr[arr.length - 1 - i][i]);
+  }
+  upArrayProd = compareArray1.reduce((a, b) => a * b);
+  downArrayProd = compareArray2.reduce((a, b) => a * b);
+  if (upArrayProd > downArrayProd) maxDiagonalProd = upArrayProd;
+  else maxDiagonalProd = downArrayProd;
+  return maxDiagonalProd;
+}
+
+function prodVerticalArray(arr) {
+  let compareArray = [],
+    maxVerticalProd = 0;
+  arr.forEach((el, index, arr) => {
+    for (let i = 0; i < el.length; i++) {
+      compareArray.push(arr[i][index]);
+    }
+  });
+  compareArray = splitIntoSubArray(compareArray, arr.length);
+  maxVerticalProd = prodHorizontalArray(compareArray);
+  return maxVerticalProd;
+}
+
+function splitIntoSubArray(arr, count) {
+  var newArray = [];
+  while (arr.length > 0) {
+    newArray.push(arr.splice(0, count));
+  }
+  return newArray;
+}
+
+function equalsTwo(arr) {
+  let isEveryNumTwo = true;
+  arr.forEach((el, index) => {
+    if (el[index] !== 2) {
+      isEveryNumTwo = false;
+      return isEveryNumTwo;
+    }
+  });
+  return isEveryNumTwo;
+}
