@@ -158,11 +158,18 @@ function doesWordExist(wordsFind, wordToSearch) {
   if (wordsFind.length === 0) {
     return null;
   }
-
   if (wordsFind.includes(wordToSearch)) {
     return true;
   } else return false;
 }
+
+// Alternative solution
+// function doesWordExist(wordsFind, wordToSearch) {
+//   if(wordsFind.length === 0) {
+//     return null
+//   }
+//   return arr.indexOf(wordToSearch) === -1 ? false : arr.indexOf(wordToSearch) === arr.lastIndexOf(wordToSearch) ? true : false
+// }
 
 // ===============================================
 
@@ -180,6 +187,14 @@ const wordsCount = [
   "disobedience",
   "matter",
 ];
+
+function howManyTimes(wordsCount, wordNeeded) {
+  let repetitive = [];
+  for (let i = 0; i < wordsCount.length; i++) {
+    wordsCount[i] === wordNeeded ? repetitive.push(wordNeeded) : null;
+  }
+  return repetitive.length;
+}
 
 // Iteration #8: Bonus
 
